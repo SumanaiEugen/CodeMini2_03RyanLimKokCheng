@@ -37,7 +37,8 @@ public class Movecube : MonoBehaviour
         }
 
     }
-    //parent for the player
+    /*
+    //parent for the player rmb to tick on trigger in collider
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == Player)
@@ -48,6 +49,22 @@ public class Movecube : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject == Player)
+        {
+            Player.transform.parent = null;
+        }
+    }
+    */
+    //collision
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject == Player)
+        {
+            Player.transform.parent = transform;
+        }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject == Player)
         {
             Player.transform.parent = null;
         }
